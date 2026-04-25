@@ -10,7 +10,8 @@ const Driver = require('../../models/Driver');
 const Owner = require('../../models/Owner');
 const Load = require('../../models/Load');
 const Notification = require('../../models/Notification');
-const Vehicle = require('../../models/Vehicle');
+const Vehicle = require('../../models/Vehicle'); // Standardized PascalCase
+
 const { protect, restrictTo } = require('../../middleware/authMiddleware');
 
 const storage = multer.memoryStorage();

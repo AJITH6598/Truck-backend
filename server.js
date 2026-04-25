@@ -49,7 +49,17 @@ const limiter = rateLimit({
 });
 
 app.use(limiter);
-app.use(cors({ origin: process.env.CLIENT_URL || '*', credentials: true }));
+app.use(cors({
+  origin: (origin, callback) => {
+    const allowedOrigins = process.env.CLIENT_URL ? process.env.CLIENT_URL.split(',') : ['*'];
+    if (!origin || allowedOrigins.includes(origin) || allowedOrigins.includes('*')) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true
+}));
 app.use(express.json());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 

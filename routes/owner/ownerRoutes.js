@@ -5,7 +5,8 @@ const { sendEmail } = require('../../config/mail');
 const jwt = require('jsonwebtoken');
 const Owner = require('../../models/Owner');
 const Driver = require('../../models/Driver');
-const Vehicle = require('../../models/Vehicle');
+const Vehicle = require('../../models/Vehicle'); // Standardized PascalCase
+
 const Load = require('../../models/Load');
 const Notification = require('../../models/Notification'); // ✅ NEW
 const { protect, restrictTo } = require('../../middleware/authMiddleware');
